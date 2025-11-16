@@ -81,7 +81,7 @@ async function run() {
             res.send(result);
         })
 
-        // single food details dekhanor jonnu 
+        // for single food details
         app.get('/foodsDetails/:id', async (req, res) => {
             const id = req.params.id;
             let query;
@@ -96,7 +96,7 @@ async function run() {
         });
 
 
-        // create kora food update korar jonnu 
+        // created food update 
         app.patch('/foods/:id', async (req, res) => {
             const id = req.params.id;
             const updateFood = req.body;
