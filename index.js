@@ -12,8 +12,6 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB credentials
-// username: Food_Sharing
-// password: rIYda57TDQXBf8MC
 
 // const uri = "mongodb+srv://Food_Sharing:rIYda57TDQXBf8MC@first-code.wkjwbyz.mongodb.net/?appName=first-code";
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@first-code.wkjwbyz.mongodb.net/?appName=first-code`;
@@ -26,6 +24,8 @@ const client = new MongoClient(uri, {
         deprecationErrors: true,
     }
 });
+
+
 
 async function run() {
     try {
@@ -155,7 +155,7 @@ async function run() {
                 res.status(500).send({ success: false, error: error.message });
             }
         });
-        
+
 
         // Reject request
         app.patch('/request_food/reject/:reqId', async (req, res) => {
