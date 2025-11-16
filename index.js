@@ -113,7 +113,7 @@ async function run() {
 
 
 
-        // create kora food delete korar jonnu 
+        // food delete
         app.delete('/foods/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: new ObjectId(id) }
@@ -122,7 +122,7 @@ async function run() {
         })
 
         //////////  Request  //////
-        // nijer request gula paite 
+        // user request
         app.get('/request_food', async (req, res) => {
             const email = req.query.email;
             const query = {};
@@ -134,7 +134,7 @@ async function run() {
             res.send(result);
         })
 
-
+        // only user can accept 
         app.patch('/request_food/accept/:reqId', async (req, res) => {
             const { reqId } = req.params;
             try {
@@ -178,6 +178,7 @@ async function run() {
         });
 
 
+        // request list get 
         app.get('/request_food', async (req, res) => {
             const cursor = requestCollection.find();
             const result = await cursor.toArray();
@@ -192,6 +193,7 @@ async function run() {
             res.send(result);
         })
 
+        // single foods request get 
         app.get('/foods/request_food/:foodId', async (req, res) => {
             const foodId = req.params.foodId;
             const query = { food: foodId }
