@@ -13,7 +13,6 @@ app.use(express.json());
 
 // MongoDB credentials
 
-// const uri = "mongodb+srv://Food_Sharing:rIYda57TDQXBf8MC@first-code.wkjwbyz.mongodb.net/?appName=first-code";
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@first-code.wkjwbyz.mongodb.net/?appName=first-code`;
 
 // Mongo client setup
@@ -53,7 +52,6 @@ async function run() {
         })
 
         // post create data 
-        // product api
         /////////////////// create food ///////////////////////////////
         app.post('/foods', async (req, res) => {
             const newFood = req.body;
@@ -61,7 +59,7 @@ async function run() {
             res.send(result);
         })
 
-        // nijer food pawae jonnu 
+        // user-creation foods
         app.get('/foods', async (req, res) => {
             const email = req.query.email;
             const query = {};
@@ -74,7 +72,7 @@ async function run() {
         })
 
 
-        // kicu poriman food dekhanor jonnu  
+        // Some of food filter  
         app.get('/latest-food', async (req, res) => {
             const cursor = FoodCollection.find().sort({
                 expire_date: -1
