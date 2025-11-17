@@ -66,7 +66,9 @@ async function run() {
 
     // Latest 6 foods
     app.get('/latest-food', async (req, res) => {
-      const cursor = FoodCollection.find().sort({ expire_date: -1 }).limit(6);
+      const cursor = FoodCollection.find().sort({
+        food_quantity: -1
+      }).limit(6);
       const result = await cursor.toArray();
       res.send(result);
     });
